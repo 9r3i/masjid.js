@@ -1,0 +1,2 @@
+# masjid.js
+Masjid Management
