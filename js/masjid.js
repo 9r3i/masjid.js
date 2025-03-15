@@ -7,14 +7,17 @@ if(typeof HELPER_BROWSER_APP==='undefined'){
 }
 
 /* initialize the app */
-const Masjid=new MasjidApp;
+const Masjid=new MasjidApp(false);
 Masjid.start();
 window.MasjidFront=Masjid;
 
 /* masjid app */
-;function MasjidApp(){
-this.helperVersion='1.3.8';
-this.AppURL='https://cdn.jsdelivr.net/npm/@9r3i/helper@'+this.helperVersion+'/app.js';
+;function MasjidApp(local=false){
+this.helperVersion='1.3.9';
+this.localHelper=local;
+this.AppURL=this.localHelper
+  ?'js/app.js'
+  :'https://cdn.jsdelivr.net/npm/@9r3i/helper@'+this.helperVersion+'/app.js';
 const meta=document.querySelector('meta[name="masjid-host"]');
 this.srcURL=meta?meta.content:'';
 this.files=[
@@ -31,7 +34,7 @@ this.start=async function(){
   app=new App({
     helperVersion:this.helperVersion,
     helperProduction:true,
-    localHelper:false,
+    localHelper:this.localHelper,
     logo:this.srcURL+'images/icon.png',
     css:this.srcURL+'css/masjid.css',
     configFile:this.srcURL+'config.json',
