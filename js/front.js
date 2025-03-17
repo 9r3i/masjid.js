@@ -57,7 +57,7 @@
     'class':'wrapper-table',
   }).appendTo(wrapper);
   logoImage.src=logo;
-  logoImage.style.width='72px';
+  logoImage.style.width='4.5rem';
   h1.insertBefore(logoImage,h1.firstChild);
   /* months */
   let months=[
@@ -127,8 +127,8 @@
     helper.parseNominal(totalOutcome,'id-ID','IDR'),
     helper.parseNominal(totalIncome-totalOutcome,'id-ID','IDR'),
   ).header();
-  
   wrapper.append(sbut);
+  
   let dev=!helper.production?'-dev':'',
   adev=!Masjid.app.production?'-dev':'',
   pdev='https://github.com/9r3i',
@@ -137,15 +137,24 @@
   hjson=helper.likeJSON(helper,3),
   text=[
     `Helper version ${helper.version}${dev}`,
-    `Eva version ${helper.eva.version}`,
+    `EvaClient version ${helper.eva.version}`,
     `App version ${Masjid.app.version}${adev}`,
     `Version of ${helper.appVersion}`,
     ``,
   ].join('<br />'),
+  /* twst button */
+  testButton=helper.button('Test','purple','gear',async function(){
+      let html=await fetch('front.html').then(r=>r.text()),
+      rhtml=html.replace(/</g,'&lt;'),
+      json=this.helper.likeJSON(this.helper,3),
+      page=this.helper.pageURL(`<pre>${this.dataset.text}</pre>`),
+      ext=this.helper.externalPage(page.url,'Framework Version');
+  },{text}),
   pre=helper.element('pre',{'class':'classic'})
     .html(text);
-  if(false){
+  if(true){
     pre.appendTo(wrapper);
+    sbut.append(testButton);
   }
   helper.element('div',{'class':'copyright'})
     .html(`Copyright &copy; ${year} &middot; ${vendor} &middot; All Right Reserved<br />Powered by <a href="${pdev}" target="_blank">9r3i</a>`)

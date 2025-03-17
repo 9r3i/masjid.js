@@ -13,11 +13,13 @@ window.MasjidFront=Masjid;
 
 /* masjid app */
 ;function MasjidApp(local=false){
-this.helperVersion='1.3.9';
+this.helperVersion='1.4.1';
 this.localHelper=local;
 this.AppURL=this.localHelper
-  ?'js/app.js'
-  :'https://cdn.jsdelivr.net/npm/@9r3i/helper@'+this.helperVersion+'/app.js';
+  ?'../app.js'
+  :'https://cdn.jsdelivr.net/npm/@9r3i/helper@'
+    +this.helperVersion+'/app.js';
+  //:'http://127.0.0.1:9303/helper/'+this.helperVersion+'/app.js';
 const meta=document.querySelector('meta[name="masjid-host"]');
 this.srcURL=meta?meta.content:'';
 this.files=[
