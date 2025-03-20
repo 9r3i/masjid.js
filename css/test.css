@@ -1,0 +1,17 @@
+
+
+*{
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+html {
+  --size-factor: (0.00188323 * 100vw);
+  font-size: calc(16 * var(--size-factor));
+  /* font-size: 3vw; */
+}
+
+pre,code{
+  font-size: 0.9rem;
+  background-color:#eed;
+}
+
