@@ -7,13 +7,13 @@ if(typeof HELPER_BROWSER_APP==='undefined'){
 }
 
 /* initialize the app */
-const Masjid=new MasjidApp(false);
+const Masjid=new MasjidApp(!true);
 Masjid.start();
 window.MasjidFront=Masjid;
 
 /* masjid app */
 ;function MasjidApp(local=false){
-this.helperVersion='1.4.1';
+this.helperVersion='1.4.5';
 this.localHelper=local;
 this.AppURL=this.localHelper
   ?'../app.js'

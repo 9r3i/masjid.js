@@ -77,8 +77,6 @@
   /* finance report */
   let fb=helper.firebase(),
   uid=helper.appNS,
-  report=await fb.get('report',uid),
-  reportDate=await fb.get('report',uid+'_date'),
   table=helper.table(),
   balance=0,
   totalIncome=0,
@@ -89,8 +87,53 @@
     helper.alias('income'),
     helper.alias('outcome'),
     helper.alias('balance'),
-  ).header();
+  ).header(),
+  img=new Image,
+  rowLoader=table.row(img);
   wrapTable.append(table);
+  rowLoader.childNodes[0].setAttribute('colspan',5);
+  rowLoader.childNodes[0].classList.add('td-center');
+  img.src=helper.IMAGES['loader.gif'];
+  
+  /* main buttons */
+  wrapper.append(sbut);
+  /* dev buttons */
+  let dev=!helper.production?'-dev':'',
+  adev=!Masjid.app.production?'-dev':'',
+  pdev='https://github.com/9r3i',
+  year=(new Date).getFullYear(),
+  vendor=helper.alias('app_vendor'),
+  hjson=helper.likeJSON(helper,3),
+  text=[
+    `Helper version ${helper.version}${dev}`,
+    `EvaClient version ${helper.eva.version}`,
+    `App version ${Masjid.app.version}${adev}`,
+    `Version of ${helper.appVersion}`,
+    ``,
+  ].join('<br />'),
+  /* twst button */
+  testButton=helper.button('Test','purple','gear',async function(){
+      let html=await fetch('front.html').then(r=>r.text()),
+      rhtml=html.replace(/</g,'&lt;'),
+      json=this.helper.likeJSON(this.helper,3),
+      page=this.helper.pageURL(`<pre>${this.dataset.text}</pre>`),
+      ext=this.helper.externalPage(page.url,'Framework Version');
+  },{text}),
+  pre=helper.element('pre',{'class':'classic'})
+    .html(text);
+  if(false){
+    pre.appendTo(wrapper);
+    sbut.append(testButton);
+  }
+  helper.element('div',{'class':'copyright'})
+    .html(`Copyright &copy; ${year} &middot; ${vendor} &middot; All Right Reserved<br />Powered by <a href="${pdev}" target="_blank">9r3i</a>`)
+    .appendTo(wrapper);
+  
+  /* get report */
+  let report=await fb.get('report',uid),
+  reportDate=await fb.get('report',uid+'_date');
+  
+  /* parse report */
   h3.innerHTML+=' &#8213; ';
   h3.append([
     months[reportDate.month],
@@ -127,38 +170,7 @@
     helper.parseNominal(totalOutcome,'id-ID','IDR'),
     helper.parseNominal(totalIncome-totalOutcome,'id-ID','IDR'),
   ).header();
-  wrapper.append(sbut);
-  
-  let dev=!helper.production?'-dev':'',
-  adev=!Masjid.app.production?'-dev':'',
-  pdev='https://github.com/9r3i',
-  year=(new Date).getFullYear(),
-  vendor=helper.alias('app_vendor'),
-  hjson=helper.likeJSON(helper,3),
-  text=[
-    `Helper version ${helper.version}${dev}`,
-    `EvaClient version ${helper.eva.version}`,
-    `App version ${Masjid.app.version}${adev}`,
-    `Version of ${helper.appVersion}`,
-    ``,
-  ].join('<br />'),
-  /* twst button */
-  testButton=helper.button('Test','purple','gear',async function(){
-      let html=await fetch('front.html').then(r=>r.text()),
-      rhtml=html.replace(/</g,'&lt;'),
-      json=this.helper.likeJSON(this.helper,3),
-      page=this.helper.pageURL(`<pre>${this.dataset.text}</pre>`),
-      ext=this.helper.externalPage(page.url,'Framework Version');
-  },{text}),
-  pre=helper.element('pre',{'class':'classic'})
-    .html(text);
-  if(true){
-    pre.appendTo(wrapper);
-    sbut.append(testButton);
-  }
-  helper.element('div',{'class':'copyright'})
-    .html(`Copyright &copy; ${year} &middot; ${vendor} &middot; All Right Reserved<br />Powered by <a href="${pdev}" target="_blank">9r3i</a>`)
-    .appendTo(wrapper);
+  rowLoader.remove();
     
 /* get helper */
 function getHelper(){
