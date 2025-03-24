@@ -1,2 +1,17 @@
 # masjid.js
 Masjid Management
+
+
+# sample
+
+## dev
+```html
+<!DOCTYPE html><html lang="en-US" dir="ltr"><head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>9r3i\masjid</title>
+  <script src="js/masjid.js" defer></script>
+</head><body>
+</body></html>
+```
