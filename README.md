@@ -15,3 +15,15 @@ Masjid Management
 </head><body>
 </body></html>
 ```
+## front
+```html
+<!DOCTYPE html><html lang="en-US" dir="ltr"><head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>9r3i\masjid\front</title>
+  <link rel="stylesheet" href="css/front.css" media="print,screen" type="text/css" />
+  <script src="js/front.js" defer></script>
+</head><body>
+</body></html>
+```
