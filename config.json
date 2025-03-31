@@ -1,0 +1,60 @@
+{
+    "appNS":"masjid",
+    "appVersion":"1.3.0",
+    "appBaseName":"Masjid",
+    "appLogo":"images/icon.png",
+    "appWallpaper":"images/wallpaper.jpg",
+    "frontPage":"front.html",
+    "themeColor":"#333333",
+    "evaHost":"https://hotelbandara.com/api/eva/",
+    "evaDevHost":"https://hotelbandara.com/api/eva/",
+    "reportHost":"https://sabunjelly.com/masjid/report/latest.txt",
+    "currency":"IDR",
+    "formatMoney":"id-ID",
+    "aliases":{
+      "view_detail":"Lihat Selengkapnya",
+      "total_balance_monthly":"TOTAL SALDO BULAN INI",
+      "total_debt_monthly":"TOTAL PENGELUARAN BULAN INI",
+      "total_credit_monthly":"TOTAL PENDAPATAN BULAN INI",
+      "flow":"Alur Kas",
+      "nominal":"Nominal",
+      "credit":"Pemasukan",
+      "debt":"Pengeluaran",
+      "note":"Keterangan",
+      "date":"Tanggal",
+      "income":"Pemasukan",
+      "outcome":"Pengeluaran",
+      "balance":"Saldo",
+      "front_description":"Laporan Keuangan Masjid",
+      "vendor_address":"Jalan Raya Kodau no. 72, Kampung Rawa Bogo, RT. 01/07, Kel. Jatimekar, Kec. Jatiasih, Kota Bekasi, Kode Pos 17422",
+      "app_vendor":"Masjid Al Ishlaah"
+    },
+    "positions":{
+      "finance":"Finance",
+      "admin":"Admin"
+    },
+    "divisions":{
+      "finance":"Finance",
+      "admin":"Admin",
+      "account":"Profile"
+    },
+    "apps":[
+      "finance",
+      "admin",
+      "account"
+    ],
+    "firebaseConfig":{
+      "apiKey": "AIzaSyCkRt84HTi2KS08P4KPwQ_jqUeAtPxv2cM",
+      "authDomain": "masjid-2025.firebaseapp.com",
+      "projectId": "masjid-2025",
+      "storageBucket": "masjid-2025.firebasestorage.app",
+      "messagingSenderId": "423978550191",
+      "appId": "1:423978550191:web:43890ffd95bec03222a55a",
+      "measurementId": "G-41X3J7RGEP",
+      "databaseURL": "https://masjid-2025-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    },
+    "firebaseUser":{
+      "email":"aa.kasep@gmail.com",
+      "passcode":"AaGanteng"
+    }
+}
