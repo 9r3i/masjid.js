@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="en-US" dir="ltr"><head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>9r3i\masjid\front</title>
+  <link rel="stylesheet" href="css/test.css" media="print,screen" type="text/css" />
+</head><body>
+  <h1>Test Header</h1>
+  <p>Their version was a bit more exotic, incorporating different scaling numbers for pages in landscape vs. portrait and such. This has the effect of “fluid type” on a website, the bigger the window, the bigger the type, and vice versa. The magic number you see above there is essentially so that that you can multiply against it with reasonable numbers that maybe feel something close to pixel (px) numbers, 12px in this case. In that way, it’s a lot like the font-size: 62.5%; thing we used to see a lot such that the math works out that 1.2rem would be 12px (you can do it in your head easier). I’d suggest scrapping that thinking. Don’t think about font sizing in pixels at all — it isn’t useful.</p>
+  <h2>Header 2</h2>
+  <p>What is ultimately going on here though is that the font-size is being set in viewpoint units only. This is what “fights” the browser zoom. I could have done <code>html { font-size: 3vw; }</code> and the effect would have been basically the same.</p>
+  <pre>
+html {
+  --size-factor: (0.00188323 * 100vw);
+  font-size: calc(16 * var(--size-factor));
+}
+  </pre>
+  <h3>Header 3</h3>
+  <p>The advice: any time you are setting a font-size, it cannot only be viewport units. It has to factor in some other kind of unit. Heck, even px works to maintain some scaling. Even this freaks me out a little bit because it affects that rate of scaling and if you speed that up or slow that down too much, that’s also messing up with the natural exceptions of how zoom works.</p>
+</body></html>
